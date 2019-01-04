@@ -1,0 +1,56 @@
+#:kivy 1.10.1
+#:import utils kivy.utils
+<Bomb>:
+    size: 20, 30
+    source: "img/bomb.png"
+    keep_ratio: False
+    allow_stretch: True
+
+<BombList>:
+    canvas:
+        Color:
+            rgb: utils.get_color_from_hex("ff00ff")
+
+<Bomber>:
+    screen_size: self.screen_size
+    size: 80, 100
+    source: "img/bomber.png"
+    allow_stretch: True
+    keep_ratio: False
+
+<Bucket>:
+    size: 75, 125
+    source: "img/3buckets.png"
+    allow_stretch: True
+    keep_ratio: False
+    pos: self.pos
+
+
+<KaboomGame>:
+    bucket: bucket
+    bomber: bomber
+    bombs: bombs
+    pause_button: pause_button
+    canvas:
+        Color: 
+            rgb: utils.get_color_from_hex("dd88dd")
+        Rectangle:  
+            size: root.width, root.height - 150
+            pos: 0, 0
+
+    Bomber:
+        id:bomber
+        center_y: root.height-125
+        screen_size: root.width
+    Bucket:
+        id:bucket
+        center_y: 100
+    BombList:
+        id:bombs
+    Button:
+        id: pause_button
+        size:100, 40
+        pos: 100, root.height - 70
+        text:"Pause"
+        on_press: root.pause_game(root, 1)
+
