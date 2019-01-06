@@ -25,6 +25,8 @@
     keep_ratio: False
     pos: self.pos
 
+<PauseButton>:
+    text: "Pause"
 
 <KaboomGame>:
     bucket: bucket
@@ -32,12 +34,16 @@
     bombs: bombs
     pause_button: pause_button
     canvas:
-        Color: 
+        Color:
             rgb: utils.get_color_from_hex("dd88dd")
-        Rectangle:  
+        Rectangle:
             size: root.width, root.height - 150
             pos: 0, 0
-
+    Label:
+        font_size: 50
+        center_x: root.width * 3 / 4
+        top: root.top - 20
+        text: str(root.score)
     Bomber:
         id:bomber
         center_y: root.height-125
@@ -47,10 +53,11 @@
         center_y: 100
     BombList:
         id:bombs
-    Button:
+    PauseButton:
         id: pause_button
         size:100, 40
-        pos: 100, root.height - 70
-        text:"Pause"
-        on_press: root.pause_game(root, 1)
+        center_x: root.width / 6
+        top: root.height - 30
+        text: "Pause (3)"
+        on_press: root.pause_game()
 
