@@ -103,7 +103,7 @@ class KaboomGame(Widget):
             if self.drop_interval > 0.1:
                 self.drop_interval -= 0.05
             if self.bombStep < 10:
-                self.bombStep += 0.2
+                self.bombStep += 0.3
             self.drop_event.timeout = self.drop_interval
             print("drop interval")
         return
